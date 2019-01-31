@@ -19,26 +19,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Morning" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sm-3Y-uWB">
-                                <rect key="frame" x="16" y="67" width="178.66666666666666" height="94"/>
+                                <rect key="frame" x="16" y="67" width="178.66666666666666" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="94" id="VPM-Fu-5d9"/>
+                                    <constraint firstAttribute="height" constant="55" id="VPM-Fu-5d9"/>
                                     <constraint firstAttribute="width" constant="178.5" id="uhH-8p-qom"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="vqZ-tC-R1b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="KohinoorDevanagari-Regular" family="Kohinoor Devanagari" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0uY-vW-UMv" userLabel="Weather Section">
-                                <rect key="frame" x="20" y="161" width="200" height="150"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uY-vW-UMv" userLabel="Weather Section">
+                                <rect key="frame" x="5" y="130" width="200" height="150"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun" translatesAutoresizingMaskIntoConstraints="NO" id="RAj-hw-zMM" userLabel="Weather Icon">
-                                        <rect key="frame" x="0.0" y="0.0" width="88" height="89"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="89" id="Mhw-52-wIl"/>
-                                            <constraint firstAttribute="width" constant="88" id="Wdz-7o-bTp"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFi-tV-0zl" userLabel="Weather Condition">
                                         <rect key="frame" x="136" y="0.0" width="64" height="33"/>
                                         <constraints>
@@ -55,7 +47,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 °C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFh-gv-CKo" userLabel="Temperature">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 °C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFh-gv-CKo" userLabel="Temperature">
                                         <rect key="frame" x="117" y="33" width="83" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="Maj-Ds-bGO"/>
@@ -65,6 +57,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sun" translatesAutoresizingMaskIntoConstraints="NO" id="RAj-hw-zMM" userLabel="Weather Icon">
+                                        <rect key="frame" x="8" y="0.0" width="88" height="89"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="89" id="Mhw-52-wIl"/>
+                                            <constraint firstAttribute="width" constant="88" id="Wdz-7o-bTp"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="RAj-hw-zMM" firstAttribute="top" secondItem="0uY-vW-UMv" secondAttribute="top" id="3Qj-Z2-Fwd"/>
@@ -84,19 +83,23 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1Sm-3Y-uWB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="23" id="03g-hw-iCG"/>
-                            <constraint firstItem="0uY-vW-UMv" firstAttribute="top" secondItem="1Sm-3Y-uWB" secondAttribute="bottom" id="PW7-6M-3WX"/>
+                            <constraint firstItem="0uY-vW-UMv" firstAttribute="top" secondItem="1Sm-3Y-uWB" secondAttribute="bottom" constant="8" id="HjJ-MK-ifQ"/>
                             <constraint firstItem="1Sm-3Y-uWB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WOf-XO-4cs"/>
+                            <constraint firstItem="0uY-vW-UMv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="evB-1Y-F7l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="cityLabel" destination="Sy7-Ku-TVI" id="hux-oR-vEY"/>
                         <outlet property="greetText" destination="1Sm-3Y-uWB" id="Ctu-Qf-lO3"/>
+                        <outlet property="temperatureLabel" destination="mFh-gv-CKo" id="ouc-F7-ZNi"/>
+                        <outlet property="weatherConditionLabel" destination="UFi-tV-0zl" id="6gH-y7-B4g"/>
+                        <outlet property="weatherIcon" destination="RAj-hw-zMM" id="m0l-Py-BPS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47.826086956521742" y="31.473214285714285"/>
+            <point key="canvasLocation" x="47.200000000000003" y="31.03448275862069"/>
         </scene>
     </scenes>
     <resources>

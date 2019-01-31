@@ -19,9 +19,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let greetingModel = greetingLogicModel();
     let locationManager = CLLocationManager();
+    let weatherDataModel = weatherModel();
     
+    @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var greetText: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherConditionLabel: UILabel!
     
     
     
@@ -48,7 +52,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: - JSON Processing
     /***************************************************************/
-    
+    func updateWeatherData(json : JSON){
+        if let tempResult = json["main"]["temp"].double{
+            weatherDataModel.temperature = Int(tempResult - 273.5);
+            weatherDataModel.condition = json["weather"][0]["id"].intValue;
+            weatherDataModel.city = json["name"].stringValue;
+            
+            //change weather data icon
+            
+            updateWeatherUI();
+        }
+        else{
+            cityLabel.text = "Error";
+        }
+    }
     
     //MARK: - Networking with OpenWeatherApp
     /***************************************************************/
@@ -57,14 +74,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             response in
             if(response.result.isSuccess){
                 print("weather data acquired");
-                
-                let weatherJSON : JSON = JSON(response.result.value);
-                
+                let weatherJSON : JSON = JSON(response.result.value!);
                 print(weatherJSON);
-                
                 //update weather data and parse JSON
-                
-                
+                self.updateWeatherData(json: weatherJSON);
             }
             else{
                 print("There is an error, the problem is \(response.result.error)");
@@ -109,22 +122,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         cityLabel.text = "Unavailable";
     }
     
-//    func timeIconLogic(){
-//        let date = NSDate();
-//        let calendar = NSCalendar.current;
-//        let hour = calendar.component(.hour, from: date as Date)
-//        let hourNumber = Int(hour.description)!
-//        
-//        if(hourNumber >= 5 && hourNumber <= 16){
-//            timeIcon.image = UIImage(named: "sun")
-//        }
-//        else if(hourNumber > 16 && hourNumber <= 19){
-//            timeIcon.image = UIImage(named: "evening")
-//        }
-//        else{
-//            timeIcon.image = UIImage(named: "moon")
-//        }
-//    }
+    
+    
+    //MARK: - UI Updates once data is acquired
+    /***************************************************************/
+    
+    func updateWeatherUI(){
+        cityLabel.text = weatherDataModel.city;
+        temperatureLabel.text = "\(weatherDataModel.temperature)°C";
+        //implemen weather data condition
+        weatherIcon.image = UIImage(named: weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition));
+    }
     
 }
 
